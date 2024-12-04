@@ -1,0 +1,43 @@
+---
+title: "prelim analysis feedback"
+format: html
+editor: visual
+---
+
+## Preliminary Analysis Feedback
+### General
+- Please clean up your Code folder so that there is only one (correct) folder called "Moore-Capstone-Project" 
+
+- Work on applying markdown correctly.
+
+- I think that for your second analysis you should do a multiple regression where you look at what factors predict telomere length in superb fairy wrens. You have a lot of biological (age, sex) and environmental (temp, rain, etc.) data and it would be cool to see if you can come up with a model that best predicts telomere length, especially since otherwise you are just conducting two simple linear regressions. I have provided a great deal of information on how to do this in the Cap-DAP-Examples git hub repo, some of which we will go over in class in the next few days, but you should jump in and get started with it.
+
+### Data analysis
+- Please split your data analysis qmd file into a separate .qmd per analysis, and name each according to the analysis each refers to.
+
+- I would like to see a histogram of both of your regression variables before  you create the model. When you do,  you will see that the rainfall data is right-skewed with a lot of zero inflation.
+
+
+- Line 31, 34 - most of the comment inside of your code chunk belongs outside of the code chunk, because it is more about why you are doing something and less about the mechanics of how the code works.
+
+- I appreciate that on line 34 you did a good job trying to guesstimate your slope and intercept. Remember though, a slope can have a small size and still be a "big slope" depending on the units and scale of your x and y axes. 
+
+- Line 46, 49 - again, most of the commentary inside of the code chunk belongs outside of the code chunk. W/regard to your question, though, I don't think you need to remove any outliers. And I think your data meet the assumptions for linear regression well enough.
+
+- Line 55. You are not conducting an anova test here - you did that when you created the model. the `anova(model_rainfall)` call just prints the results. 
+
+- Line 55 and line 59 are good ideas of code that you could keep inside of a code chunk, but lines 57 and 61 also belong outside of the code chunks.
+
+- Line 74 - also provide the R2 value. And I'd like you to add somethign about the biological relevance. Does it make biological sense that rainfall and telomere length don't appear related? Address that question in 1-2 sentences.
+
+Basically a good job~
+
+-------------------------
+Line 76 - this is where the next .qmd file should begin
+
+### Is there a relationship b/w min temp and telomere length?
+Basically all of the comments from the above analysis apply here, too, so I'm not going to type them all again.
+
+Line 102 - remember, you are not "running an anova" you are just asking for the anova table output from your linear regression.
+
+

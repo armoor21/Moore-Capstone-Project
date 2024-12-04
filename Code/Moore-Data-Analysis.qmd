@@ -3,7 +3,9 @@ title: "Moore-Data-Analysis"
 format: html
 editor: visual
 ---
+
 Setting up workspace
+
 ```{r}
 #Clearing R's environment
 rm (list = ls())
@@ -21,10 +23,10 @@ library(here)
 eastwood <- read.csv(here("Data", "Eastwood23_superb_climate_data_revised.csv"))
 ```
 
-#Question 1: Is there a relationship between rainfall amounts and telomere length?
-I am looking for a relationship between rainfall and telomere length, which are both ratio data. Since there is only one predictor variable, I will use a linear regression. 
+#Question 1: Is there a relationship between rainfall amounts and telomere length? I am looking for a relationship between rainfall and telomere length, which are both ratio data. Since there is only one predictor variable, I will use a linear regression.
 
 Predicting analysis
+
 ```{r}
 #Making scatterplot as initial depiction of data. Making predictions off of this scatterplot can allow me to determine if there are any mistakes when I do my analysis. The summary statistics in the analysis should be similar to the ones estimated from the scatterplot.
 ggplot(eastwood, aes(Rainfall.nestling, rTL)) + geom_point()
@@ -33,11 +35,13 @@ ggplot(eastwood, aes(Rainfall.nestling, rTL)) + geom_point()
 ```
 
 Making linear regression
+
 ```{r}
 model_rainfall <- lm(rTL ~ Rainfall.nestling, data = eastwood)
 ```
 
 Checking assumption
+
 ```{r}
 #The residuals vs fitted plot should have no humps or valleys to assume that a linear model is appropriate for this data. In the Q-Q plot, the data should be linear to assume that the data is normally distributed. In the scale-location plot, there should be no pattern of points, so the line should be straight, to assume that there is constant variance. The residuals vs leverage plot detects points that have too much influence on the data set, such as outliers. 
 autoplot(model_rainfall, smooth.color = NA)
@@ -46,6 +50,7 @@ autoplot(model_rainfall, smooth.color = NA)
 ```
 
 Running ANOVA
+
 ```{r}
 #ANOVA test
 anova(model_rainfall)
@@ -57,6 +62,7 @@ summary(model_rainfall)
 ```
 
 Making new figure
+
 ```{r}
 ggplot(eastwood, aes(Rainfall.nestling, rTL))+
      geom_point()+
@@ -65,14 +71,12 @@ ggplot(eastwood, aes(Rainfall.nestling, rTL))+
      theme_bw()
 ```
 
-Results
-Rainfall amount during the nestling phase for superb fairy wrens does not impact telomere length (F~1,341~ = 0.1253, p = 0.7236).
+Results Rainfall amount during the nestling phase for superb fairy wrens does not impact telomere length (F~1,341~ = 0.1253, p = 0.7236).
 
-
-#Question 2: Is there a relationship between minimum temperature and telomere length?
-I am looking for a relationship between temperature and telomere length, which are both ratio data. Since there is only one predictor variable, I will use a linear regression. 
+#Question 2: Is there a relationship between minimum temperature and telomere length? I am looking for a relationship between temperature and telomere length, which are both ratio data. Since there is only one predictor variable, I will use a linear regression.
 
 Predicting analysis
+
 ```{r}
 #Making scatterplot as initial depiction of data. Making predictions off of this scatterplot can allow me to determine if there are any mistakes when I do my analysis. The summary statistics in the analysis should be similar to the ones estimated from the scatterplot.
 ggplot(eastwood, aes(Tmin.nestling, rTL)) + geom_point()
@@ -81,11 +85,13 @@ ggplot(eastwood, aes(Tmin.nestling, rTL)) + geom_point()
 ```
 
 Making linear regression
+
 ```{r}
 model_temperature <- lm(rTL ~ Tmin.nestling, data = eastwood)
 ```
 
 Checking assumption
+
 ```{r}
 #The residuals vs fitted plot should have no humps or valleys to assume that a linear model is appropriate for this data. In the Q-Q plot, the data should be linear to assume that the data is normally distributed. In the scale-location plot, there should be no pattern of points, so the line should be straight, to assume that there is constant variance. The residuals vs leverage plot detects points that have too much influence on the data set, such as outliers. 
 autoplot(model_temperature, smooth.color = NA)
@@ -94,6 +100,7 @@ autoplot(model_temperature, smooth.color = NA)
 ```
 
 Running ANOVA
+
 ```{r}
 #ANOVA test
 anova(model_temperature)
@@ -105,6 +112,7 @@ summary(model_temperature)
 ```
 
 Making new figure
+
 ```{r}
 ggplot(eastwood, aes(Tmin.nestling, rTL))+
      geom_point()+
@@ -113,5 +121,4 @@ ggplot(eastwood, aes(Tmin.nestling, rTL))+
      theme_bw()
 ```
 
-Results
-Minimum temperature during the nestling phase for superb fairy wrens does not impact telomere length (F~1,341~ = 0.8925, p = 0.3455).
+Results Minimum temperature during the nestling phase for superb fairy wrens does not impact telomere length (F~1,341~ = 0.8925, p = 0.3455).
